@@ -56,6 +56,31 @@ areaTriangulo,
 
 console.groupEnd('triangulo')
 
+console.group('trianguloEscaleno')
+
+const a = 3;
+const b = 4;
+const c = 5; 
+
+function calcularTrianguloEscaleno (a, b, c) {
+    const semiPerimetro = (a + b + c) / 2;
+
+    if (a == b || a == c) {
+        console.warn ('este no es un triangulo escaleno.')
+    } else {
+        h = ((2/a) * (Math.sqrt(semiPerimetro * (semiPerimetro - a) * (semiPerimetro - b) * (semiPerimetro - c))));
+        console.log('La altura "h" = ' + h) ;
+    }
+}
+
+console.log({
+    a,
+    b,
+    c,
+});
+
+console.groupEnd('trianguloEscaleno')
+
 console.group('circulo');
 
 const radioCirculo = 3;
