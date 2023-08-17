@@ -46,3 +46,20 @@ function calcularPromedio(array) {
     //array.length
 }
 
+function ordenarLista(listaDesornedada) {
+    function ordenarListaSort(valorAcumulado, nuevoValor) {
+        // if(valorAcumulado > nuevoValor) {
+        //     return 1;
+        // } else if(valorAcumulado == nuevoValor) {
+        //     return 0;
+        // } else if(valorAcumulado < nuevoValor) {
+        //     return -1;
+        // }
+
+        return valorAcumulado - nuevoValor;
+    } 
+    
+    const lista = listaDesornedada.sort(ordenarListaSort);
+
+    return lista;
+}
