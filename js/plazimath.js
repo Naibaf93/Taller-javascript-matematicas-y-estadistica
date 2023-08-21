@@ -6,7 +6,24 @@ function esImpar(array) {
     return array.length % 2;
 }
 
-function cacularMediana(array) {
+function calcularModa(array) {
+    const listaCount = {};
+
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+
+        if(listaCount[element]) {
+            listaCount[element] += 1;
+        } else {
+            listaCount[element] = 1;
+        }
+    }
+
+    console.log(listaCount);
+}
+
+function cacularMediana(listaDesornedada) {
+    const array = ordenarLista(listaDesornedada);
     const listaEsPar = esPar(array);
 
     if (listaEsPar) {
