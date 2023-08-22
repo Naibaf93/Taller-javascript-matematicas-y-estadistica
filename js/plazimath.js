@@ -19,7 +19,12 @@ function calcularModa(array) {
         }
     }
 
-    console.log(listaCount);
+    const listaArray = Object.entries(listaCount);
+    const listaOrdenada = ordenarListaBidimensional(listaArray, 1)
+    const listaMaxNumber = listaOrdenada[listaOrdenada.length -1];
+    // console.log(listaCount, listaArray, listaOrdenada, listaMaxNumber);
+    console.log('La moda es: ' + listaMaxNumber[0]);
+
 }
 
 function cacularMediana(listaDesornedada) {
@@ -78,5 +83,14 @@ function ordenarLista(listaDesornedada) {
     
     const lista = listaDesornedada.sort(ordenarListaSort);
 
+    return lista;
+}
+
+function ordenarListaBidimensional(listaDesornedada, i) {
+    function ordenarListaSort(valorAcumulado, nuevoValor) {
+        return valorAcumulado[i] - nuevoValor[i];
+    } 
+    
+    const lista = listaDesornedada.sort(ordenarListaSort);
     return lista;
 }
