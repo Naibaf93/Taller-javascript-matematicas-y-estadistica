@@ -39,7 +39,7 @@ function proyeccionPersona(namePerson) {
     const medianaPorcentajesCrecimiento = PlatziMath.calcularMediana(porcentajesCrecimiento)
     // console.log(porcentajesCrecimiento, medianaPorcentajesCrecimiento);
 
-    const ultimoSalario =trabajos[trabajos.length - 1].salario;
+    const ultimoSalario = trabajos[trabajos.length - 1].salario;
     const aumento = ultimoSalario * medianaPorcentajesCrecimiento;
     const nuevoSalario = ultimoSalario + aumento;
 
@@ -76,12 +76,43 @@ for (person of salarios) {
 
 console.log({empresas});
 
-function medianaEmpresaYear(name, year) {
-    if(!empresas[name]) {
-        console.warn(' la empresa no existe');
-    } else if (!empresas[name] [year]) {
+function medianaEmpresaYear(nombre, year) {
+    if(!empresas[nombre]) {
+        console.warn('la empresa no existe');
+    } else if(!empresas[nombre] [year]) {
         console.warn('la empresa no dio salarios ese año');
     } else {
-        PlatziMath.calcularMediana(empresas[name] [year]);
+       return PlatziMath.calcularMediana(empresas[nombre] [year]);
+    }
+}
+
+function proyeccionEmpresa(nombre) {
+    if(!empresas[nombre]) {
+        console.warn('la empresa no existe');
+    } else {
+        const empresaYears = Object.keys(empresas[nombre]);
+        const listaMedianaYears = empresaYears.map((year) => {
+            return medianaEmpresaYear(nombre, year);
+        });
+
+        console.log({listaMedianaYears});
+
+        let porcentajesCrecimiento = [];
+
+        for (let i = 1; i < listaMedianaYears.length; i++) {
+            const salarioActual = listaMedianaYears[i];
+            const salarioPasado = listaMedianaYears[i - 1];
+            const crecimiento = salarioActual - salarioPasado;
+            const porcentajeCrecimiento = crecimiento / salarioPasado;
+            porcentajesCrecimiento.push(porcentajeCrecimiento)
+        }
+    
+        const medianaPorcentajesCrecimiento = PlatziMath.calcularMediana(porcentajesCrecimiento);
+    
+        const ultimaMediana = listaMedianaYears[listaMedianaYears.length - 1];
+        const aumento = ultimaMediana * medianaPorcentajesCrecimiento;
+        const nuevaMediana = ultimaMediana + aumento;
+    
+        return nuevaMediana;
     }
 }
