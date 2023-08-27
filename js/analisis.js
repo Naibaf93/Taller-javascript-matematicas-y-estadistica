@@ -45,3 +45,33 @@ function proyeccionPersona(namePerson) {
 
     return nuevoSalario;
 }
+
+// analisis empresarial
+
+/* {
+Industrias mokepon: {
+    2018: [salario, salario, salario]
+    2019:
+    2020:
+},
+ Industrias mokepon:{},
+ Industrias mokepon:{},
+ Industrias mokepon:{},
+} */
+
+const empresas = {};
+for (person of salarios) {
+    for(trabajo of person.trabajos) {
+        if(!empresas[trabajo.empresa]) {
+            empresas[trabajo.empresa] = {};
+        }
+
+        if (!empresas[trabajo.empresa] [trabajo.year]) {
+            empresas[trabajo.empresa] [trabajo.year] = [];
+        }
+
+        empresas[trabajo.empresa] [trabajo.year].push(trabajo.salario);
+    }
+}
+
+console.log({empresas});
