@@ -116,3 +116,28 @@ function proyeccionEmpresa(nombre) {
         return nuevaMediana;
     }
 }
+
+// Analisis general
+
+function medianaGeneral() {
+    const listaMedianas = salarios.map(person => medianaPersona(person.name));
+    const mediana = PlatziMath.calcularMediana(listaMedianas);
+    
+    return mediana; 
+} 
+
+function medianaTop10() {
+    const listaMedianas = salarios.map(person => medianaPersona(person.name));
+    const medianasOrdenadas = PlatziMath.ordenarLista(listaMedianas);
+    const cantidad = listaMedianas.length / 10; 
+    const limite = listaMedianas.length - cantidad;
+
+    //slice
+    //splice
+
+    const top10 = medianasOrdenadas.slice(limite, medianasOrdenadas.length);
+    // const top10 = medianasOrdenadas.splice(limite, medianasOrdenadas.length);
+
+    const medianaTop10 = PlatziMath.calcularMediana(top10);
+    return medianaTop10;
+}
